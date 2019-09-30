@@ -1,19 +1,19 @@
-// JavaScript Document
-const LoadCarouselCaption = function(){
+
+const CarouselModule = function(){
+	var myArr = ""
+ function loadCarouselCaption(){
 var xmlhttp = new XMLHttpRequest();
 var url = "caption.txt"
 xmlhttp.onreadystatechange = function() {
 	//調取本地資源 status 為0 
     if (this.readyState == 4 && this.status == 0) {
-        var myArr = JSON.parse(this.responseText);
-        console.log(myArr)
+        myArr = JSON.parse(this.responseText);
+        caption();
     }
 };
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 }
-
-const CarouselModule = function(){
 	const carImgs = document.querySelector('#carousel-imgs')
 	const carUp = document.querySelector('#up')
 	const carNext = document.querySelector('#next')
@@ -22,7 +22,7 @@ const CarouselModule = function(){
 	const carousel = document.querySelector('#carousel')
 	const carTips = document.querySelector('#car-tips')
 	const carLi = carTips.querySelectorAll('li')
-	const carCaption = document.querySelector('carCaption')
+	const carCaption = document.querySelector('#carCaption')
 	var carTimer
 	var carIndex = 0
 	var carMove = 0
@@ -50,6 +50,8 @@ function clickNext(){
 	carIndex++
 	if(carIndex === carImg.length){carIndex = 0}
 	carLi[carIndex].classList.add('active')
+	console.log(myArr[carIndex].value)
+	caption()
 }
 
 //點擊左按鈕 換上一張照片
@@ -68,7 +70,9 @@ function clickUp(){
 	if(carIndex === 0){carIndex = carImg.length}
 	carIndex--
 	carLi[carIndex].classList.add('active')
+	caption()
 }
+	loadCarouselCaption();
 	
 	//用閉包將每個小圓點掛上EventListener
 for(j=0;j<carLi.length;j++){
@@ -81,7 +85,9 @@ for(j=0;j<carLi.length;j++){
 			carIndex = j
 			carMove = j * -carImg[0].offsetWidth
 			carImgs.style.left = carMove + "px"
+			caption()
 		})
+		
 	})(j)
 	
 }
@@ -91,5 +97,5 @@ for(j=0;j<carLi.length;j++){
 	   
 }
 
-window.onload = LoadCarouselCaption()
+//window.onload = LoadCarouselCaption()
 CarouselModule();
