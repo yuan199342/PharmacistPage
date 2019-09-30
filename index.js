@@ -1,19 +1,6 @@
 
 const CarouselModule = function(){
 	var myArr = ""
- function loadCarouselCaption(){
-var xmlhttp = new XMLHttpRequest();
-var url = "caption.txt"
-xmlhttp.onreadystatechange = function() {
-	//調取本地資源 status 為0 
-    if (this.readyState == 4 && this.status == 0) {
-        myArr = JSON.parse(this.responseText);
-        caption();
-    }
-};
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-}
 	const carImgs = document.querySelector('#carousel-imgs')
 	const carUp = document.querySelector('#up')
 	const carNext = document.querySelector('#next')
@@ -22,15 +9,40 @@ xmlhttp.send();
 	const carousel = document.querySelector('#carousel')
 	const carTips = document.querySelector('#car-tips')
 	const carLi = carTips.querySelectorAll('li')
-	const carCaption = document.querySelector('#carCaption')
+	const carCaption = document.querySelector('#caption')
+	const carCaptionP = carCaption.querySelectorAll('p')
 	var carTimer
 	var carIndex = 0
 	var carMove = 0
+//載入JSON
+function loadCarouselCaption(){
+var xmlhttp = new XMLHttpRequest();
+var url = "caption.txt"
+xmlhttp.onreadystatechange = function() {
+	//調取本地資源 status 為0 
+    if (this.readyState == 4 && this.status == 0) {
+        myArr = JSON.parse(this.responseText);
+		printCaption();
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+}
+	
+	//XML的回呼 將caption內容印出來
+function printCaption(){
+	for(i=0;i<myArr.length;i++){
+		carCaptionP[i].innerHTML = myArr[i].value
+	}
+}
 	
 //右方caption隨輪播改變
 function caption(){
-	carCaption.innerHTML = myArr[carIndex].value
-	console.log('captionReady')
+	for(i=0;i<carCaptionP.length;i++){
+		carCaptionP[i].classList.remove('active')
+		console.log(carCaptionP[i].classList)
+	}
+	carCaptionP[carIndex].classList.add('active')
 }
 	
 	
@@ -91,11 +103,8 @@ for(j=0;j<carLi.length;j++){
 	})(j)
 	
 }
-
 	carNext.addEventListener('click',clickNext)
     carUp.addEventListener('click',clickUp)
 	   
 }
-
-//window.onload = LoadCarouselCaption()
 CarouselModule();
