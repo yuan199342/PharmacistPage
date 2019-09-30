@@ -1,0 +1,130 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    background: #C7C7C7;
+	
+}
+
+nav{
+	background: #6DB6FB;
+	margin: 20px;
+	height: 50px;
+	display: flex;
+}
+#container {
+	display: flex;
+}
+.nav-head{
+	flex: 1;
+    margin: 15px 0 15px 30px;
+}
+.nav-tail {
+	flex: 3;
+}
+.nav-tail ul {
+	flex:1;
+	justify-content:flex-end;
+	display: flex;
+	margin-right: 10px
+}
+
+.nav-tail li {
+	display: inline-block;
+	margin:0 20px 0 20px;
+	font-size: 20px;
+}
+#carousel {
+	width:600px;
+    height:500px;
+    margin: 0 auto 0 50px;
+    position:relative;
+    overflow:hidden; 
+	flex:1
+	
+}
+#carousel-imgs {
+	width: 3000px;
+	height: 500px;
+    position:absolute;
+    left:0;
+	transition: left 1s ease ;
+}
+#carousel-imgs a {
+	float:left;
+}
+#carousel-imgs img {
+	width:600px;
+	float:left;
+}
+#carousel-imgs a:after{
+	content:"";
+display:block;
+clear:both;
+}
+
+/*輪播下的小圓點*/
+#car-tips{
+margin:0;
+padding:0;
+z-index:999;
+position: absolute;
+bottom: 30px;
+left: 50%;
+transform: translate(-50%);
+list-style:none;
+}
+#car-tips li{
+width:18px;
+height: 18px;
+border-radius:50%;
+background:#333;
+float:left;
+margin-left:5px;
+}
+
+#car-tips li:hover{
+	background:white;
+}
+
+/* 切換到相應的圖片 相應小圓點的顏色 */
+#car-tips .active{
+background:gray;
+	transition:background 1s;
+}
+/**** 左右按鈕 絕對定位 大小 去下劃線****************/ 
+#car-btn a{
+position:absolute;
+top:50%;
+margin-top:-100px;
+font-size:80px;
+text-decoration: none;
+	color: white;
+}
+
+#car-btn a:hover{
+	font-size:150px;
+	cursor:pointer;
+}
+#car-btn #next{
+position:absolute;
+right:0%;
+}
+
+/*輪播圖說明文字*/
+#caption {
+	flex:1;
+	background: #F4A45D;
+	max-width: 300px;
+    height:500px;
+	margin: 0 10px 0 10px;
+}
+#author {
+	flex:1;
+	background: #F4A45D;
+	max-width: 300px;
+    height:500px;
+	margin: 0 10px 0 10px;
+}
+
+
