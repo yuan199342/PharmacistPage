@@ -117,26 +117,23 @@ right:0%;
 	background: #F4A45D;
 	position: relative;
 	max-width: 300px;
-    height:500px;
-	margin: 0 10px 0 10px;
-	opacity: 1;
-	transition: opacity 1s ease ;
-	
+	margin: 0 10px 30px 10px;
+	padding: 0 20px 30px 20px;
 }
-div #caption > p{
+/*原本文字透明度0*/
+div #caption  p{
 	opacity: 0;
+	transition: all 2s ease ;
 	position: absolute;
-	top:30px;
-	left:30px;
-	transition: opacity 1s ease ;
+	left: auto;
+	top:auto;
+	padding: 0 10px 0 10px;
 }
-
-#caption > .active {
+/*觸發後文字透明度1*/
+#caption  .active {
 	opacity: 1;
-	color:black;
 }
 #author {
-	flex:1;
 	background: #F4A45D;
 	max-width: 300px;
     height:500px;

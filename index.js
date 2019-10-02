@@ -33,15 +33,20 @@ xmlhttp.send();
 function printCaption(){
 	for(i=0;i<myArr.length;i++){
 		carCaptionP[i].innerHTML = myArr[i].value
+		//carCaptionP[0].style.display = "block"
+		console.log(carCaptionP[i])
 	}
 }
 	
 //右方caption隨輪播改變
 function caption(){
+	
 	for(i=0;i<carCaptionP.length;i++){
-		carCaptionP[i].classList.remove('active')
+	//carCaptionP[i].removeAttribute('style');	
+		carCaptionP[i].classList.remove('active');
 		console.log(carCaptionP[i].classList)
 	}
+//carCaptionP[carIndex].style.display = "block";	
 	carCaptionP[carIndex].classList.add('active')
 }
 	
